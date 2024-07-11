@@ -1,0 +1,823 @@
+{
+	"info": {
+		"_postman_id": "cf5ace6f-6d2c-407c-afa3-fd63fb97eb2b",
+		"name": "CME Palindrome Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6856946"
+	},
+	"item": [
+		{
+			"name": "Validation",
+			"item": [
+				{
+					"name": "Invalid requests",
+					"item": [
+						{
+							"name": "No body supplied",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Missing all request fields",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Missing username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"text\": \"madam\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Empty username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"\",\n    \"text\": \"madam\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Too long username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"12345678901234567890123456\",\n    \"text\": \"madam\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Username contains space character",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"stephen gibson\",\n    \"text\": \"madam\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Username contains accented character",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"stephén\",\n    \"text\": \"madam\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Username contains special character",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"stephen_gibson\",\n    \"text\": \"madam\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Missing text",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"stephen\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Empty text",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"stephen\",\n    \"text\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Too long text",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"stephen\",\n    \"text\": \"123456789012345678901234567890123456789012345678901\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Text contains space character",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"stephen\",\n    \"text\": \"madam kayak\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Text contains number character",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"stephen\",\n    \"text\": \"madam8madam\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Valid requests",
+					"item": [
+						{
+							"name": "Text contains special character",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"stephen\",\n    \"text\": \"&^^&\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Text contains accented character",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"stephen\",\n    \"text\": \"mádám\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:7007/api/v1/palindrome/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7007",
+									"path": [
+										"api",
+										"v1",
+										"palindrome",
+										"check"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "RENAME ME but valid request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"stephen\",\n    \"text\": \"mádám\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7007/api/v1/palindrome/check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7007",
+							"path": [
+								"api",
+								"v1",
+								"palindrome",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cache contents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7007/api/v1/palindrome/cache-contents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7007",
+							"path": [
+								"api",
+								"v1",
+								"palindrome",
+								"cache-contents"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
