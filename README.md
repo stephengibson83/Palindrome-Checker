@@ -18,7 +18,8 @@ The application is a Spring Boot app. The following is required to be installed 
 To build the application locally, execute the command:
 - mvn clean package
 
-If for any reason the maven cannot download any dependent jar, the full maven repo has been zipped and available in the "repository.zip" file.
+If for any reason maven cannot download any dependent jar, the full maven repo has been zipped and available via the following link: 
+https://www.icloud.com/iclouddrive/0c8O1GidiT8BDHJ7uP9v7mrzQ#repository
 
 ## Assumptions
 - Results are not to be stored per user
